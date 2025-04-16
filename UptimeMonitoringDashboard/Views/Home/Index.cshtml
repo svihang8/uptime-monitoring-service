@@ -1,0 +1,25 @@
+@model List<UptimeMonitor.Models.ServiceStatus>
+
+<h2>Service Status Dashboard</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>URL</th>
+            <th>Status</th>
+            <th>Last Checked</th>
+            <th>Response Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var status in Model)
+        {
+            <tr>
+                <td>@status.Name</td>
+                <td>@(status.IsUp == "true" ? "✅" :
+                            status.IsUp == "false" ? "❌" : "?")</td>
+                <td>@status.LastChecked</td>
+                <td>@status.ResponseTime</td>
+            </tr>
+        }
+    </tbody>
+</table>

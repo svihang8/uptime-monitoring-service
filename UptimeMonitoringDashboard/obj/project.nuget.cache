@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Kj6ApvWixbI=",
+  "success": true,
+  "projectFilePath": "/Users/vihangshah/Github/uptime-monitoring-service/UptimeMonitoringDashboard/UptimeMonitoringDashboard.csproj",
+  "expectedPackageFiles": [
+    "/Users/vihangshah/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

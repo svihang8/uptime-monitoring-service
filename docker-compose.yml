@@ -19,7 +19,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
@@ -29,6 +29,32 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+
+  api:
+    build:
+      context: .
+      dockerfile: UptimeMonitoringAPI/Dockerfile
+    ports:
+      - "5130:80"
+    depends_on:
+      - kafka
+      - redis
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Kafka__BootstrapServers=kafka:9092
+      - Redis__ConnectionString=redis:6379
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: UptimeMonitoringDashboard/Dockerfile
+    ports:
+      - "5131:80"
+    depends_on:
+      - api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - Api__BaseUrl=http://api:80
 
 volumes:
   redis_data:

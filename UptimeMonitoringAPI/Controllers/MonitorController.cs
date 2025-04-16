@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using UptimeMonitor.Services;
-using UptimeMonitor.Models;
+using UptimeMonitoringAPI.Services;
+using UptimeMonitoringAPI.Models;
 
 namespace UptimeMonitoringAPI.Controllers {
 

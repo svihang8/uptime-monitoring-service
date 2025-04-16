@@ -1,4 +1,4 @@
-namespace UptimeMonitor.Models;
+namespace UptimeMonitoringAPI.Models;
 
 public class MonitorRequest
 {

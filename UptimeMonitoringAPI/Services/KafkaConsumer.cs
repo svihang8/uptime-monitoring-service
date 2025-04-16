@@ -1,18 +1,19 @@
 using Confluent.Kafka;
-using Microsoft.Extensions.Hosting;
 using System.Text.Json;
-using UptimeMonitor.Models;
-using Microsoft.Extensions.Logging;
+using UptimeMonitoringAPI.Models;
 
-namespace UptimeMonitor.Services;
+namespace UptimeMonitoringAPI.Services;
 
 public class KafkaMonitorConsumer : BackgroundService
 {
     private readonly IRedisService _redis;
     private readonly ILogger<KafkaMonitorConsumer> _logger;
 
-    public KafkaMonitorConsumer(IRedisService redis, ILogger<KafkaMonitorConsumer> logger)
+    private readonly IConfiguration _configuration;
+
+    public KafkaMonitorConsumer(IRedisService redis, ILogger<KafkaMonitorConsumer> logger, IConfiguration configuration)
     {
+        _configuration = configuration;
         _redis = redis;
         _logger = logger;
     }
@@ -20,10 +21,9 @@ public class KafkaMonitorConsumer : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         _logger.LogInformation("Starting Kafka consumer...");
-        
         var config = new ConsumerConfig
         {
-            BootstrapServers = "localhost:9092",
+            BootstrapServers = $"{_configuration.GetValue<string>("Host:Kafka")}",
             GroupId = "monitor-group",
             AutoOffsetReset = AutoOffsetReset.Earliest,
             EnableAutoCommit = true,
@@ -34,7 +34,7 @@ public class KafkaMonitorConsumer : BackgroundService
         
         try
         {
-            _logger.LogInformation("Subscribing to topic 'check-requests'...");
+            _logger.LogInformation("Subscribing to topic check-requests...");
             consumer.Subscribe("check-requests");
             _logger.LogInformation("Successfully subscribed to topic");
 

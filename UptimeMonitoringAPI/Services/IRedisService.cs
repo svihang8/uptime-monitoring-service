@@ -1,4 +1,4 @@
-namespace UptimeMonitor.Services;
+namespace UptimeMonitoringAPI.Services;
 
 public interface IRedisService
 {

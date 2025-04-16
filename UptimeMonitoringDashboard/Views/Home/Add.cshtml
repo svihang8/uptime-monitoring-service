@@ -1,0 +1,18 @@
+@{
+    ViewData["Title"] = "Add Service Status";
+}
+
+<h2>Add Service URL</h2>
+
+<form method="post" action="@Url.Action("Add", "Home")">
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" class="form-control" id="url" name="url" required placeholder="Enter URL" />
+    </div>
+    <div class="form-group">
+        <label for="intervalSeconds">Check Interval (in seconds)</label>
+        <input type="number" class="form-control" id="intervalSeconds" name="intervalSeconds" required
+            placeholder="Enter interval" />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Service</button>
+</form>

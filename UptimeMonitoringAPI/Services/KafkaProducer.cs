@@ -1,15 +1,15 @@
 using Confluent.Kafka;
 using System.Text.Json;
-using UptimeMonitor.Models;
+using UptimeMonitoringAPI.Models;
 
-namespace UptimeMonitor.Services;
+namespace UptimeMonitoringAPI.Services;
 
 public static class KafkaProducer
 {
     private static readonly IProducer<Null, string> _producer = new ProducerBuilder<Null, string>(
         new ProducerConfig 
         { 
-            BootstrapServers = "localhost:9092",
+            BootstrapServers = "kafka:9092",
             Acks = Acks.All
         }).Build();
 

@@ -1,17 +1,22 @@
 using StackExchange.Redis;
+using UptimeMonitoringAPI.Models;
 
-namespace UptimeMonitor.Services;
+namespace UptimeMonitoringAPI.Services;
 
 public class RedisService : IRedisService
 {
+
     private readonly ConnectionMultiplexer _redis = ConnectionMultiplexer.Connect(new ConfigurationOptions
     {
-        EndPoints = { "localhost:6379" },
+        EndPoints = { "redis:6379" },
         AbortOnConnectFail = false
     });
     private readonly IDatabase _db;
 
-    public RedisService() => _db = _redis.GetDatabase();
+    public RedisService() {
+        Console.WriteLine($"Redis connection test : {_redis.IsConnected}");
+        _db = _redis.GetDatabase();
+    }
 
     public async Task SaveStatus(string url, bool isUp, double responseTime)
     {
@@ -28,22 +33,21 @@ public class RedisService : IRedisService
 
     public object GetAllStatuses()
     {
-        var server = _redis.GetServer("localhost", 6379);
+        var server = _redis.GetServer("redis", 6379);
         var keys = server.Keys(pattern: "status:*");
-        var statuses = new List<object>();
+        var statuses = new List<ServiceStatus>();
         foreach (var key in keys)
         {
             var url = key.ToString().Replace("status:", "");
             var data = _db.HashGetAll(key);
-            statuses.Add(new
-            {
+            statuses.Add(new ServiceStatus(
                 url,
-                lastChecked = data.FirstOrDefault(d => d.Name == "lastChecked").Value.ToString(),
-                isUp = data.FirstOrDefault(d => d.Name == "isUp").Value.ToString(),
-                responseTime = data.FirstOrDefault(d => d.Name == "responseTime").Value.ToString()
-            });
+                data.FirstOrDefault(d => d.Name == "isUp").Value.ToString(),
+                data.FirstOrDefault(d => d.Name == "lastChecked").Value.ToString(),
+                data.FirstOrDefault(d => d.Name == "responseTime").Value.ToString()
+            ));
         }
-        return statuses;
+        return System.Text.Json.JsonSerializer.Serialize(statuses);
     }
 
     public object GetFailures()

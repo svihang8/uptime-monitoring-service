@@ -4,6 +4,47 @@ This project is a full-stack uptime monitoring application that tracks the avail
 
 ---
 
+## 🚀 Getting Started
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Running the Project
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd uptime-monitoring-service
+   ```
+
+2. Build and start all services using Docker Compose:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. Access the services:
+   - API: http://localhost:5130
+   - Dashboard: http://localhost:5131
+   - Kafka: localhost:9092
+   - Redis: localhost:6379
+   - Zookeeper: localhost:2181
+
+4. To stop all services:
+   ```bash
+   docker-compose down
+   ```
+
+### Development
+
+- The API service runs on port 5130
+- The Dashboard service runs on port 5131
+- Services communicate internally using Docker's internal network
+- Environment variables are configured in docker-compose.yml
+
+---
+
 ## 🧠 Functionality
 
 - **Service Registration**: Add URLs that need to be monitored.

@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/vihangshah/Github/uptime-monitoring-service/UptimeMonitoringDashboard/UptimeMonitoringDashboard.csproj": {}
+  },
+  "projects": {
+    "/Users/vihangshah/Github/uptime-monitoring-service/UptimeMonitoringDashboard/UptimeMonitoringDashboard.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vihangshah/Github/uptime-monitoring-service/UptimeMonitoringDashboard/UptimeMonitoringDashboard.csproj",
+        "projectName": "UptimeMonitoringDashboard",
+        "projectPath": "/Users/vihangshah/Github/uptime-monitoring-service/UptimeMonitoringDashboard/UptimeMonitoringDashboard.csproj",
+        "packagesPath": "/Users/vihangshah/.nuget/packages/",
+        "outputPath": "/Users/vihangshah/Github/uptime-monitoring-service/UptimeMonitoringDashboard/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/vihangshah/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

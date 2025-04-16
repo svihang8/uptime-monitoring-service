@@ -1,0 +1,18 @@
+@model List<string>
+
+<h2>Failed URL</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var status in Model)
+        {
+            <tr>
+                <td>@status</td>
+        </tr>
+                }
+    </tbody>
+</table>
