@@ -56,7 +56,20 @@ This project is a full-stack uptime monitoring application that tracks the avail
 
 ## 🖼️ Screenshot
 
-![Screenshot Placeholder](https://via.placeholder.com/600x400.png?text=Service+Uptime+Dashboard)
+### Index
+
+![Screenshot Placeholder](https://github.com/svihang8/uptime-monitoring-service/blob/main/assets/index.png)
+
+### Failure
+
+![Screenshot Placeholder](https://github.com/svihang8/uptime-monitoring-service/blob/main/assets/failure.png)
+
+### Add URL
+
+
+
+https://github.com/user-attachments/assets/7328d5d8-e602-435e-9319-6e11a51d77e7
+
 
 ---
 
