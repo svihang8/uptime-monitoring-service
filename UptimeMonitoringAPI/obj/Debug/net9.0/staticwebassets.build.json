@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "pT/JphS7moZEMqf+15FfwulJLP7fqOfcfMJ5JkmkRQw=",
+  "Source": "UptimeMonitoringAPI",
+  "BasePath": "_content/UptimeMonitoringAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
